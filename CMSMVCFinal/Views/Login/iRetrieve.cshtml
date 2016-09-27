@@ -1,0 +1,38 @@
+﻿@model CMSMVCFinal.Models.tbl_Retrieve
+
+@{
+    ViewBag.Title = "iRetrieve";
+}
+<link href="~/bootstrap.css" rel="stylesheet" />
+
+@using (Html.BeginForm("iRetrieve", "Login", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <div class="container" style="text-align: center">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Forgot Your Password</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="editor-label">
+                        @ViewBag.Message
+                        Please Enter your Retrieval Code
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Code, new { @class = "form-control", @placeholder = "Retrieval Code Here" })
+                        @Html.ValidationMessageFor(model => model.Code)
+                    </div>
+                    <br />
+                    <p>
+                        <input type="submit" value="Retrieve" class="btn btn-danger" />
+                    </p>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.ActionLink("Cancel", "Index", "", new { @class = "btn btn-primary" })
+
+}

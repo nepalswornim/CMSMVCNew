@@ -1,0 +1,57 @@
+﻿@model CMSMVCFinal.Models.Models.PostViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+<link href="~/bootstrap.css" rel="stylesheet" />
+
+@using (Html.BeginForm("Edit", "CMS", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(m => m.PostId)
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <fieldset>
+                    <legend>Edit Post</legend>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.PostTitle)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.PostTitle, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PostTitle)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Post)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextAreaFor(model => model.Post, new { @class = "form-control", @rows = "4" })
+                        @Html.ValidationMessageFor(model => model.Post)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.FeaturedPhoto)
+                    </div>
+                    <img src="~/Photo/@Html.DisplayFor(m => m.FeaturedPhoto)" width="100px" height="100px" />
+                    <div class="editor-field">
+
+                        @Html.TextBoxFor(model => model.FeaturedPhoto, new { type = "file", @class = "form-control" })
+                    </div>
+                    <br />
+                    <p>
+                        <input type="submit" class="btn btn-primary" value="Edit" />
+
+                        @Html.ActionLink("Cancel Editing", "AdminPanel", "", new { @class = "btn btn-primary" })
+                    </p>
+                </fieldset>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+}
+
+<div>
+</div>

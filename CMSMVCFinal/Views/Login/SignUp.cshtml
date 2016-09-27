@@ -1,0 +1,56 @@
+﻿@model CMSMVCFinal.Models.Models.SignUpViewModel
+
+@{
+    ViewBag.Title = "SignUp";
+}
+<link href="~/bootstrap.css" rel="stylesheet" />
+<link href="~/styles.css" rel="stylesheet" />
+<div class="login-bg">
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <h1><a href="index.html">Swornim CMS</a></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm("SignUp", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="page-content container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="login-wrapper">
+                        <div class="box">
+                            <div class="content-wrap">
+                                <h6>Sign Up</h6>
+                                @Html.TextBoxFor(model => model.Username, new { @class = "form-control", @placeholder = "Username" })
+                                @Html.ValidationMessageFor(model => model.Username)
+                                @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" })
+                                @Html.ValidationMessageFor(model => model.Password)
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email" })
+                                @Html.ValidationMessageFor(model => model.Email)
+                                @Html.TextBoxFor(model => model.Photo, new { type = "file", @class = "form-control" })
+
+                                <div class="action">
+
+                                    <input class="btn btn-primary signup" type="submit" value="Create" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="already">
+                            <p>Have an account already?</p>
+                            @Html.ActionLink("Login", "Login", "Login")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script src="https://code.jquery.com/jquery.js"></script>
